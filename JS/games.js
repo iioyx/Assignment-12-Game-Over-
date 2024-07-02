@@ -1,13 +1,9 @@
-// games.js
-
 import { UI } from "./UI.js";
 
-const header = document.querySelector('header');
-const nav = document.querySelector('nav');
-
+const header = document.querySelector("header");
+const nav = document.querySelector("nav");
 
 export class Games {
-
   constructor() {
     this.links = document.querySelectorAll(".nav-link");
     this.newUI = new UI();
@@ -29,8 +25,7 @@ export class Games {
       const response = await fetch(url, options);
       const result = await response.json();
       this.newUI.displaygames(result);
-      this.showdetails(result); 
-      
+      this.showdetails(result);
     } catch (error) {
       console.error(error);
     }
@@ -48,28 +43,23 @@ export class Games {
 
   showdetails(result) {
     const cards = document.querySelectorAll(".item");
-    cards.forEach(card => {
-        card.addEventListener("click", (e) => {
-            const id = e.currentTarget.getAttribute("id");
-            const game = result.find((game) => game.id == id);
-            if (game) {
-                nav.classList.add('d-none');
-                header.classList.add('d-none');
-                this.newUI.displaydetails(game);
-            
-                document.getElementById('icon').addEventListener('click', () => {
-                    nav.classList.remove('d-none');
-                    header.classList.remove('d-none');
-                    this.newUI.displaygames(result);
-                    this.showdetails(result); 
-                    
-                });
-            }
-        });
+    cards.forEach((card) => {
+      card.addEventListener("click", (e) => {
+        const id = e.currentTarget.getAttribute("id");
+        const game = result.find((game) => game.id == id);
+        if (game) {
+          nav.classList.add("d-none");
+          header.classList.add("d-none");
+          this.newUI.displaydetails(game);
+
+          document.getElementById("icon").addEventListener("click", () => {
+            nav.classList.remove("d-none");
+            header.classList.remove("d-none");
+            this.newUI.displaygames(result);
+            this.showdetails(result);
+          });
+        }
+      });
     });
-
-
+  }
 }
-
-}
-

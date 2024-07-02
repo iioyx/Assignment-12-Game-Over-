@@ -7,7 +7,9 @@ export class UI {
     let box = ``;
     for (let i = 0; i < result.length; i++) {
       box += `
-        <div id="${result[i].id}" class="item col-lg-3 col-md-4 col-sm-12 px-2 mb-3">
+        <div id="${
+          result[i].id
+        }" class="item col-lg-3 col-md-4 col-sm-12 px-2 mb-3">
             <div class="card bg-transparent text-white px-2 ">
                 <img class="mt-3 rounded" src="${
                   result[i].thumbnail
@@ -30,7 +32,6 @@ export class UI {
       `;
     }
     document.getElementById("data").innerHTML = box;
-    
   }
 
   displaydetails(game) {
@@ -57,7 +58,6 @@ export class UI {
       </div>
       </div>
       `;
-    document.getElementById('data').innerHTML = box;
-}
-
+    document.getElementById("data").innerHTML = box;
+  }
 }
